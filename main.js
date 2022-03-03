@@ -14,9 +14,14 @@ async function processo(req, res) {
             })
         }
 
-        const test = await app.testarRequisicao()
+        //const test = await app.testarRequisicao()
 
-        console.log(test)
+        console.log(listaStatus[1])
+
+        for (let i = 0; i < listaStatus.length; i++) {
+           let indexNoExcel = i+3
+            const adicionando =await app.excelOp(indexNoExcel,listaStatus[i])
+        }
         
 
 
