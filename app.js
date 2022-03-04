@@ -1,7 +1,7 @@
 var axios = require('axios');
-const Excel = require('exceljs');
 
-//app.listen(port, () => console.log(`Example app listening at http://localhost:${port}/sptech/todos`))
+const XlsxPopulate = require('xlsx-populate');
+
 function testarRequisicao() {
 
     axios.get('http://localhost:8080/sptech/todos').then(function (data) {
@@ -20,49 +20,52 @@ function procurarColab() {
 
 async function postCases(key) {
     let status = ""
-    const article = {
-        nome: "leda",
-        semestreAtual: "*",
-        donopost: "Letícia",
-        especialidades: {
-            especialidade: "Vender",
-            nivelProfissional: "Vendedora",
-            nivel: "Alto"
-        }
-    }
+    // Ex.
+    // const article = {
+    //     nome: "leda",
+    //     semestreAtual: "*",
+    //     donopost: "Letícia",
+    //     especialidades: {
+    //         especialidade: "Vender",
+    //         nivelProfissional: "Vendedora",
+    //         nivel: "Alto"
+    //     }
+    // }
     Response = await axios({
         method: 'post',
         url: 'http://localhost:8080/sptech/colaborador',
         data: {
             key
         }
-            
+
     });
 
-
+    // console.log(Response)
     status = Response.status
     return status
 
 }
 
 
-async function excelOp(IdColuna, valueColumn) {
-    console.log(IdColuna,valueColumn)
-    let workbook = new Excel.Workbook();
+async function excelOp(valueColumn) {
 
-    workbook = await workbook.xlsx.readFile('CT_API_Franklin_Matheus.xlsx'); // Substitua para o arquivo a ser alterado;
+    let arquivoExcel = "./Planilhas/CT_API_Franklin_Matheus.xlsx"
+    
+    XlsxPopulate.fromFileAsync('./Planilhas/CT_API_Franklin_Matheus.xlsx')
 
-    let worksheet = workbook.getWorksheet('Planilha1'); // Substitua o nome da planilha "subplanilha";
+        .then(workbook => {
+            
+            for (let index = 0; index < valueColumn.length; index++) {
 
-    worksheet.getCell('H'+IdColuna).value = valueColumn; // Substitua pela cédula que deseja modeficar e add um valor a ela.
+                workbook.sheet("Planilha1").cell(`H${index + 3}`).value(valueColumn[index]);
 
-    workbook.xlsx.writeFile('CT_API_Franklin_Matheus.xlsx');
+            } return workbook.toFileAsync(arquivoExcel);
+            
+        });
 
-    setTimeout(() => {
-        
-    }, 1000);
-   
+        console.log(`Foram adicionados ${valueColumn.length} novos status na planilha: ${arquivoExcel}\n`)
 }
+
 
 module.exports = {
     testarRequisicao,
@@ -70,6 +73,3 @@ module.exports = {
     postCases,
     excelOp
 }
-/* const article = { 
-   
-};*/
