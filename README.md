@@ -32,5 +32,11 @@ Pronto, sua pasta (planilha) provavelmente já foi preenchida com o status do se
 
 Qualquer dúvidas ou problemas entre em contato com:
 
-Franklin Silva: franklin.oliveira@bandtec.com.br
-Matheus Matos: matheus.matos@bandtec.com.br
+Franklin Silva: franklin.oliveira@bandtec.com.br <br>
+Matheus Matos: matheus.matos@bandtec.com.br <br>
+
+### Referencias
+
+- Biblioteca [ExelJs](https://www.npmjs.com/package/exceljs#interface) <br>
+- Biblioteca [Express](https://www.npmjs.com/package/express) <br>
+- Biblioteca [xlsx-populate]{https://www.npmjs.com/package/xlsx-populate} <br>
