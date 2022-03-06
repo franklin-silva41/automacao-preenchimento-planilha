@@ -39,4 +39,4 @@ Matheus Matos: matheus.matos@bandtec.com.br <br>
 
 - Biblioteca [ExelJs](https://www.npmjs.com/package/exceljs#interface) <br>
 - Biblioteca [Express](https://www.npmjs.com/package/express) <br>
-- Biblioteca [xlsx-populate]{https://www.npmjs.com/package/xlsx-populate} <br>
+- Biblioteca [XlsxPopulate]{https://www.npmjs.com/package/xlsx-populate} <br>
